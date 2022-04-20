@@ -14,14 +14,18 @@ public class Main {
      System.out.println(carlos.toString());
 
 
-     Moto moto = new Moto("CG", "ZIK2516", 2015);
+     Moto moto   = new Moto("CG", "ZIK2516", 2015, 300);
      moto.setAno(2016);
 
-     Carro carro = new Carro("Gol", "PIK469", 2000);
+     Carro carro = new Carro("Gol", "PIK469", 2000, 1000);
      carro.setModelo("Corsa");
 
      System.out.println(moto.toString());
      System.out.println(carro.toString());
+
+     Concerto valor = new Concerto();
+     valor.somaConcerto(moto);
+     System.out.println(valor.getSoma());
 
     }
 }

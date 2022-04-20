@@ -1,5 +1,6 @@
 package com.company;
 
+//Não pode intsanciar, pois não existe um funcionário que que só é funcionario.
 public abstract class Funcionario {
     private   String nome;
     private   String CPF;

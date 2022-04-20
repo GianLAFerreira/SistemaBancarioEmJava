@@ -1,16 +1,20 @@
 package com.company;
-
+//Não pode intsanciar, pois não existe um veiculo que que só é veiculo.
 public abstract class Veiculo {
 
     private String modelo;
     private String placa;
     private int    ano;
+    private double valor;
 
-    public Veiculo(String modelo, String placa, int ano){
+    public Veiculo(String modelo, String placa, int ano, double valor){
         this.modelo = modelo;
         this.placa  = placa;
         this.ano    = ano;
+        this.valor  = valor;
     }
+
+    public abstract double getConcerto();
 
     public String getModelo() {
         return this.modelo;
@@ -36,12 +40,21 @@ public abstract class Veiculo {
         this.ano = ano;
     }
 
+    public double getValor() {
+        return this.valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
     @Override
     public String toString() {
         return "Veiculo{" +
                 "modelo='"  + modelo + '\'' +
                 ", placa='" + placa  + '\'' +
                 ", ano="    + ano    +
+                ", valor="  + valor  +
                 '}';
     }
 }
