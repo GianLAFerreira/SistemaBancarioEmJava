@@ -5,7 +5,7 @@ public class Concerto {
 
     public void somaConcerto(Veiculo veiculo){
         double valor = veiculo.getConcerto();
-        this.soma    += valor;
+        this.soma   += valor;
     }
 
     public double getSoma() {
