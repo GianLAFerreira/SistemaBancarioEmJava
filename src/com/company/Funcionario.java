@@ -38,9 +38,9 @@ public abstract class Funcionario {
     @Override
     public String toString() {
         return "Funcionario{" +
-                "nome='" + nome + '\'' +
-                ", CPF='" + CPF + '\'' +
-                ", salario=" + salario +
+                "nome='"         + nome + '\'' +
+                ", CPF='"        + CPF + '\'' +
+                ", salario="     + salario +
                 ". Bonificacao=" + getBonificacao() +
                 '}' ;
     }
