@@ -25,6 +25,7 @@ public class Main {
 
      Concerto valor = new Concerto();
      valor.somaConcerto(moto);
+     valor.somaConcerto(carro);
      System.out.println(valor.getSoma());
 
     }

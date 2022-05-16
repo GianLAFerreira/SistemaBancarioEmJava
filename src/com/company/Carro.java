@@ -7,6 +7,6 @@ public class Carro extends Veiculo {
 
     @Override
     public double getConcerto() {
-        return 0;
+        return getValor();
     }
 }
