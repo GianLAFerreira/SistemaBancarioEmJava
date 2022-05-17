@@ -9,4 +9,9 @@ public class Carro extends Veiculo {
     public double getConcerto() {
         return getValor();
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

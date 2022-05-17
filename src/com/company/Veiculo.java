@@ -1,11 +1,18 @@
 package com.company;
-//Não pode intsanciar, pois não existe um veiculo que que só é veiculo.
 public abstract class Veiculo {
 
     private String modelo;
     private String placa;
     private int    ano;
     private double valor;
+
+    /**
+     * Não pode intsanciar, pois não existe um veiculo que que só é veiculo.
+     * @param modelo
+     * @param placa
+     * @param ano
+     * @param valor
+     */
 
     public Veiculo(String modelo, String placa, int ano, double valor){
         this.modelo = modelo;
