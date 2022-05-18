@@ -3,8 +3,9 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class TesteClasseAnonima {
+public class TesteLambdas {
     public static void main(String[] args) {
 
         Veiculo carro1 = new Carro("Gol",   "PIK469", 2000, 9000);
@@ -18,26 +19,33 @@ public class TesteClasseAnonima {
         lista.add(carro3);
         lista.add(carro4);
 
-        for (Veiculo obj: lista){
-            System.out.println(obj);
-        }
+        /**
+         * ForEach com classe anonima
+         */
+        lista.forEach(new Consumer<Veiculo>() {
+            @Override
+            public void accept(Veiculo veiculo) {
+                System.out.println(veiculo);
+            }
+        });
         System.out.println("------------");
 
-        lista.sort(new Comparator<Veiculo>() {
-            @Override
-            public int compare(Veiculo o1, Veiculo o2){
-                return o1.getModelo().compareTo(o2.getModelo());
-            }}
+        /**
+         * Função lambda
+         */
+        lista.sort((Veiculo o1, Veiculo o2)                ->  o1.getModelo().compareTo(o2.getModelo())
         );
 
-        Comparator<Veiculo> comp = new Comparator<>(){
-            @Override
-            public int compare(Veiculo o1, Veiculo o2) {
+        /**
+         * Classe anonima
+         */
+        Comparator<Veiculo> comp = (Veiculo o1, Veiculo o2)-> {
                 return Double.compare(o1.getValor(), o2.getValor());
-            }};
+        };
 
-        for (Veiculo obj: lista){
-            System.out.println(obj);
-        }
+        /**
+         * forEach com Lambda
+         */
+        lista.forEach(System.out::println);
     }
 }
