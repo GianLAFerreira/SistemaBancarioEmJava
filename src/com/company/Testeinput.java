@@ -2,7 +2,7 @@ package com.company;
 
 import java.io.*;
 
-public class TesteLeitura {
+public class Testeinput {
     public static void main(String[] args) throws IOException {
 
         InputStream fis = new FileInputStream("lorem.txt"); //entrada do arquivo
