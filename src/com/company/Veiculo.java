@@ -1,4 +1,7 @@
 package com.company;
+
+import java.util.Objects;
+
 public abstract class Veiculo {
 
     private String modelo;
@@ -53,6 +56,19 @@ public abstract class Veiculo {
 
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Veiculo veiculo = (Veiculo) o;
+        return ano == veiculo.ano && Double.compare(veiculo.valor, valor) == 0 && Objects.equals(modelo, veiculo.modelo) && Objects.equals(placa, veiculo.placa);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(modelo, placa, ano, valor);
     }
 
     @Override

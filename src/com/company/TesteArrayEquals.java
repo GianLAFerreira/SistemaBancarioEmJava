@@ -11,7 +11,11 @@ public class TesteArrayEquals {
         Veiculo moto  = new Moto ("Biz", "KHJ658", 2020, 5000);
         lista.add(moto);
 
-        
+        Veiculo moto2 = new Moto ("Biz", "KHJ658", 2020, 5000);
+        boolean existe = lista.contains(moto2);
+
+        System.out.println("Já existe? " + existe);
+
         for (Veiculo obj : lista){
             System.out.println(obj);
         }
