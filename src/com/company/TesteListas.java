@@ -3,38 +3,43 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class TesteListas{
     public static void main(String[] args) {
 
-        Cursos curso1 = new Cursos("Java e Orientação a Objetos", 21);
-        Cursos curso2 = new Cursos("SQL com PostgreSQL", 50);
-        Cursos curso3 = new Cursos("Java moderno: tire proveito dos novos recursos do Java 8", 12);
+        Aulas curso1 = new Aulas("Java e Orientação a Objetos", 21);
+        Aulas curso2 = new Aulas("SQL com PostgreSQL", 50);
+        Aulas curso3 = new Aulas("Java moderno: tire proveito dos novos recursos do Java 8", 12);
+
+        Curso javaColecoes = new Curso("Collections", "Paulo Silveira");
+        javaColecoes.adiciona(new Aulas("Aula de sexo", 1));
+        System.out.println(javaColecoes.getAulas());
 
 
-        ArrayList<Cursos> cursos = new ArrayList<>();
-        cursos.add(curso1);
-        cursos.add(curso2);
-        cursos.add(curso3);
+        ArrayList<Aulas> aulas = new ArrayList<>();
+        aulas.add(curso1);
+        aulas.add(curso2);
+        aulas.add(curso3);
 
-       // System.out.println(cursos);
-       // cursos.remove(0);
+       // System.out.println(aulas);
+       // aulas.remove(0);
        // System.out.println(aulas);
         /**
          * Ordena 2 poarametros
          */
-        Collections.sort(cursos, Comparator.comparing(Cursos::getTempo));
-        cursos.forEach(System.out::println);
+        Collections.sort(aulas, Comparator.comparing(Aulas::getTempo));
+        aulas.forEach(System.out::println);
     }
 
 
 }
-class Cursos implements Comparable <Cursos>{
+class Aulas implements Comparable <Aulas>{
     private String titulo;
     private int    tempo;
 
 
-    public Cursos(String titulo, int tempo) {
+    public Aulas(String titulo, int tempo) {
         this.titulo = titulo;
         this.tempo  = tempo;
     }
@@ -55,7 +60,32 @@ class Cursos implements Comparable <Cursos>{
     }
 
     @Override
-    public int compareTo(Cursos o1) {
+    public int compareTo(Aulas o1) {
         return this.titulo.compareTo(o1.titulo);
+    }
+}
+class Curso{
+    private String nome;
+    private String instrutor;
+    private List<Aulas> aulas = new ArrayList<Aulas>();
+
+    public Curso(String nome, String instrutor) {
+        this.nome = nome;
+        this.instrutor = instrutor;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public String getInstrutor() {
+        return this.instrutor;
+    }
+
+    public List<Aulas> getAulas() {
+        return Collections.unmodifiableList(aulas);
+    }
+    public void adiciona(Aulas aula){
+        this.aulas.add(aula);
     }
 }
