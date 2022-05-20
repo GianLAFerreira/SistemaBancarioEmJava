@@ -2,34 +2,29 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class TesteListas{
     public static void main(String[] args) {
 
-        Aulas curso1 = new Aulas("Java e Orientação a Objetos", 21);
-        Aulas curso2 = new Aulas("SQL com PostgreSQL", 50);
-        Aulas curso3 = new Aulas("Java moderno: tire proveito dos novos recursos do Java 8", 12);
-
-        Curso javaColecoes = new Curso("Collections", "Paulo Silveira");
-        javaColecoes.adiciona(new Aulas("Aula de sexo", 1));
+        Curso javaColecoes  = new Curso("Collections", "Paulo Silveira");
+        javaColecoes.adiciona(new Aulas("Java e Orientação a Objetos", 21));
+        javaColecoes.adiciona(new Aulas("SQL com PostgreSQL", 50));
+        javaColecoes.adiciona(new Aulas("Java moderno: tire proveito dos novos recursos do Java 8", 12));
         System.out.println(javaColecoes.getAulas());
 
+        List<Aulas> aulas =  javaColecoes.getAulas();
+        List<Aulas> aulasMutaveis = new ArrayList<>(aulas);
+        Collections.sort(aulasMutaveis);
+        System.out.println(aulasMutaveis);
 
-        ArrayList<Aulas> aulas = new ArrayList<>();
-        aulas.add(curso1);
-        aulas.add(curso2);
-        aulas.add(curso3);
-
-       // System.out.println(aulas);
-       // aulas.remove(0);
-       // System.out.println(aulas);
         /**
          * Ordena 2 poarametros
+         *  -> Collections.sort(aulas, Comparator.comparing(Aulas::getTempo));
          */
-        Collections.sort(aulas, Comparator.comparing(Aulas::getTempo));
+
         aulas.forEach(System.out::println);
+        System.out.println(javaColecoes);
     }
 
 
@@ -87,5 +82,21 @@ class Curso{
     }
     public void adiciona(Aulas aula){
         this.aulas.add(aula);
+    }
+    public int getTempoTotal(){
+        int tempoTotal =0;
+        for (Aulas aula :aulas){
+           tempoTotal += aula.getTempo();
+        }
+        return tempoTotal;
+    }
+
+    @Override
+    public String toString() {
+        return "Curso{" +
+                "nome='" + nome + '\'' +
+                ", instrutor='" + instrutor + '\'' +
+                ", aulas=" + aulas +
+                '}';
     }
 }
