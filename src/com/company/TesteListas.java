@@ -1,8 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class TesteListas{
     public static void main(String[] args) {
@@ -63,6 +61,7 @@ class Curso{
     private String nome;
     private String instrutor;
     private List<Aulas> aulas = new ArrayList<Aulas>();
+    private Set<TesteSets> alunos = new HashSet<>();
 
     public Curso(String nome, String instrutor) {
         this.nome = nome;
@@ -99,4 +98,16 @@ class Curso{
                 ", aulas=" + aulas +
                 '}';
     }
+    public void matricula(TesteSets aluno){
+        this.alunos.add(aluno);
+    }
+    public Set<TesteSets> getAlunos(){
+        return Collections.unmodifiableSet(alunos);
+    }
+
+    public boolean estaMatriculado(TesteSets aluno) {
+        return this.alunos.contains(aluno);
+    }
+
+
 }
