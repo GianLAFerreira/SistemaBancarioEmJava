@@ -62,6 +62,7 @@ class Curso{
     private String instrutor;
     private List<Aulas> aulas = new ArrayList<Aulas>();
     private Set<TesteSets> alunos = new HashSet<>();
+    private Map<Integer, TesteSets> matriculaParaAluno = new HashMap<>();
 
     public Curso(String nome, String instrutor) {
         this.nome = nome;
@@ -100,6 +101,7 @@ class Curso{
     }
     public void matricula(TesteSets aluno){
         this.alunos.add(aluno);
+        this.matriculaParaAluno.put(aluno.getNumeroMatricula(), aluno);
     }
     public Set<TesteSets> getAlunos(){
         return Collections.unmodifiableSet(alunos);
@@ -110,4 +112,9 @@ class Curso{
     }
 
 
+    public TesteSets buscaMatriculado(int numero) {
+        if (!matriculaParaAluno.containsKey(numero))
+            throw new NoSuchElementException();
+        return matriculaParaAluno.get(numero);
+    }
 }

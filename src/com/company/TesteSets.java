@@ -62,6 +62,8 @@ class CursoComAluno{
         javaColecoes.matricula(aluno2);
         javaColecoes.matricula(aluno3);
 
+        System.out.println(javaColecoes.buscaMatriculado(444472));
+
         System.out.println("Alunos matriculados");
         javaColecoes.getAlunos().forEach(System.out::println);
 
